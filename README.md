@@ -27,4 +27,35 @@ class Solution:
         backtrack(0, nums, k, Counter())
         return self.res
 
-  
+LC : 994 Rotting Oranges
+  ![image](https://github.com/atishay2/daily_problems/assets/52835993/7d2a423b-1534-49e2-a172-cc7fee6069a8)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/541043a6-98f6-4d8e-bd98-9defbc14531e)
+
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        q = collections.deque() ; fresh = 0
+        ROW = len(grid) ; COL = len(grid[0])
+        for x in range(ROW):
+            for y in range(COL):
+                if grid[x][y] == 1:
+                    fresh += 1
+                if grid[x][y] == 2:
+                    q.append((x,y))
+        count = 0 ; visit = set()
+        while q and fresh > 0:
+            qLen = len(q)
+
+            for _ in range(qLen):
+                cur_x, cur_y = q.popleft()
+
+                for a, b in [(0,1),(0,-1), (1,0), (-1,0)]:
+                    m, n = cur_x+a, cur_y+b
+
+                    if 0 <= m < ROW and 0 <= n < COL and (m,n) not in visit and grid[m][n] == 1:
+                        fresh -= 1
+                        q.append((m,n))
+                        visit.add((m,n))
+            count += 1
+        
+        return count if fresh == 0 else -1
+
