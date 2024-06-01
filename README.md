@@ -28,10 +28,10 @@ class Solution:
         return self.res
 
 LC : 994 Rotting Oranges
-  ![image](https://github.com/atishay2/daily_problems/assets/52835993/7d2a423b-1534-49e2-a172-cc7fee6069a8)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/7d2a423b-1534-49e2-a172-cc7fee6069a8)
 ![image](https://github.com/atishay2/daily_problems/assets/52835993/541043a6-98f6-4d8e-bd98-9defbc14531e)
 
-class Solution:
+    class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         q = collections.deque() ; fresh = 0
         ROW = len(grid) ; COL = len(grid[0])
