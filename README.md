@@ -63,12 +63,12 @@ LC : 2486 Append Characters to String to Make Subsequence
 ![image](https://github.com/atishay2/daily_problems/assets/52835993/0e9757a8-c026-461f-b96a-20516685d9e3)
 ![image](https://github.com/atishay2/daily_problems/assets/52835993/d56956ca-9c5b-4658-a905-46fc1b4860a3)
 
-class Solution:
-    def appendCharacters(self, s: str, t: str) -> int:
-        r = 0
-        for x in range(len(s)):
-            
-            if r < len(t) and s[x] == t[r] :
-                r += 1
-        return len(t)-r
+    class Solution:
+        def appendCharacters(self, s: str, t: str) -> int:
+            r = 0
+            for x in range(len(s)):
+                
+                if r < len(t) and s[x] == t[r] :
+                    r += 1
+            return len(t)-r
 
