@@ -72,3 +72,31 @@ LC : 2486 Append Characters to String to Make Subsequence
                     r += 1
             return len(t)-r
 
+LC : 344. Reverse String
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/f1222e26-494d-4f7a-821a-1aa2daeed6e0)
+
+    class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        l, r = 0, len(s)-1
+
+        while l <= r:
+            s[l], s[r] = s[r], s[l]
+            l += 1; r -= 1 
+        return s
+
+LC : 3110 Score of a String
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/8c130ea3-53c7-49ad-b057-159899e782cc)
+
+    class Solution:
+        def scoreOfString(self, s: str) -> int:
+        
+            res = 0 
+            for x in range(len(s)-1):
+                res += abs(ord(s[x])-ord(s[x+1]))
+            return res
+
