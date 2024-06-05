@@ -100,3 +100,24 @@ LC : 3110 Score of a String
                 res += abs(ord(s[x])-ord(s[x+1]))
             return res
 
+LC : 1002 Find Common Characters
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/7d2a7bc8-227a-4da6-90ec-a4488cb94909)
+
+
+    class Solution:
+        def commonChars(self, words: List[str]) -> List[str]:
+            count = Counter(words[0])
+            for word in words:
+                cur_dic = Counter(word)
+    
+                for c in count:
+                    count[c] = min(count[c], cur_dic[c])
+    
+            res = []
+    
+            for key in count:
+    
+                for x in range(count[key]):
+                    res.append(key)
+            return res
