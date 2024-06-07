@@ -121,3 +121,31 @@ LC : 1002 Find Common Characters
                 for x in range(count[key]):
                     res.append(key)
             return res
+
+LC : 846 Hand of Straights
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/dce179bb-cb44-4239-b16a-105e850c87a0)
+
+    class Solution:
+        def isNStraightHand(self, hand: List[int], groupSize: int) -> bool:
+            if len(hand)%groupSize != 0:
+                return False
+            count = Counter(hand)
+    
+            heap = (list(count.keys()))
+            heapq.heapify(heap)
+            
+            while heap:
+                first = heap[0]
+    
+                for i in range(first, first+groupSize):
+                    
+                    if i not in heap:
+                        return False
+                    count[i] -= 1
+                    if count[i] == 0 :
+                        if i != heap[0]:
+                            return False
+                        
+                        heapq.heappop(heap)
+            return True
