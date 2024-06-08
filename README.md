@@ -149,3 +149,21 @@ LC : 846 Hand of Straights
                         
                         heapq.heappop(heap)
             return True
+
+LC : 3174. Clear Digits
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/c117c815-a98c-4f8a-a203-e43f5c13aafc)
+
+
+    class Solution:
+        def clearDigits(self, s: str) -> str:
+            
+            stack = []
+            ans = list(s)
+    
+            for x in range(len(s)):
+                if stack and ans[x].isdigit():
+                    stack.pop()
+                else:
+                    stack.append(ans[x])
+            return "".join(stack)
