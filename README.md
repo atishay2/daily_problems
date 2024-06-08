@@ -167,3 +167,28 @@ LC : 3174. Clear Digits
                 else:
                     stack.append(ans[x])
             return "".join(stack)
+
+LC : 3175. Find The First Player to win K Games in a Row
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/f1ac5907-769e-4451-aad1-918553c50dbf)
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/3caa1e8d-d6a1-49d9-8b6e-bc2f77603257)
+
+    class Solution:
+        def findWinningPlayer(self, skills: List[int], k: int) -> int:
+            freq = {skills[i] : [i, k] for i in range(len(skills))}
+            if k >= len(skills)-1: return skills.index(max(skills))
+            que = collections.deque(skills)
+    
+            flag = True
+            first = que.popleft()
+            while flag:
+                sec = que.popleft()
+                first = max(first,sec)
+                sec = min(first,sec)
+                que.append(sec)
+                freq[first][1] -= 1
+                if freq[first][1] == 0:
+                    flag = False
+            return freq[first][0]
+
