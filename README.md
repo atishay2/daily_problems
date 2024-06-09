@@ -192,3 +192,25 @@ LC : 3175. Find The First Player to win K Games in a Row
                     flag = False
             return freq[first][0]
 
+LC : 974. Subarray Sums Divisible by K
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/b1ea6bff-432d-4d33-b04e-016ecbbbb5ed)
+
+    class Solution:
+        def subarraysDivByK(self, nums: List[int], k: int) -> int:
+            
+            freq = {0 : [-1]}
+    
+            cum = 0 ; count = 0
+    
+            for i, num in enumerate(nums):
+                cum += num 
+                rem = cum % k 
+                if rem in freq :
+                    count += len(freq[rem])
+                    freq[rem].append(i)
+                else:
+                    freq[rem] = [i]
+            return count
+
+
