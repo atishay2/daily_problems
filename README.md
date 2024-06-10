@@ -213,4 +213,43 @@ LC : 974. Subarray Sums Divisible by K
                     freq[rem] = [i]
             return count
 
+LC : 3179. Find the N-th Value After K Seconds
 
+![image](https://github.com/atishay2/daily_problems/assets/52835993/fa1bef4b-da2d-4067-88c9-44a0124140dc)
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/174e3e38-a245-4efc-97c3-b57fbbd57c61)
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/3e0b6720-18d0-47a4-99ba-5955df63f50d)
+
+    class Solution:
+        def valueAfterKSeconds(self, n: int, k: int) -> int:
+            grid = [[0 for _ in range(n)] for _ in range(k+1)]
+    
+          
+    
+            for x in range(k+1):
+                for y in range(n):
+                    if x == 0 or y == 0:
+                        
+                        grid[x][y] = 1
+                    if x > 0 and y > 0:
+                        grid[x][y] = grid[x-1][y]+grid[x][y-1]
+            return grid[-1][-1] % (10**9+7)
+
+LC : 3178. Find the Child Who Has the Ball After K Seconds
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/f52b1adb-e15c-4926-8489-dcbb9557faf1)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/d889ef66-a252-422c-83ad-de54d340910a)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/c3980067-7447-40f4-a18f-52ae9ebd90dc)
+
+    
+    class Solution:
+        def numberOfChild(self, n: int, k: int) -> int:
+            Qu = k//(n-1)
+            rem = k%(n-1)
+            par = Qu%2
+    
+            if par == 0:
+                return rem
+            else:
+                return n-rem-1
