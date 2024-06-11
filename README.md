@@ -253,3 +253,27 @@ LC : 3178. Find the Child Who Has the Ball After K Seconds
                 return rem
             else:
                 return n-rem-1
+
+LC : 1122. Relative Sort Array
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/b919a271-6f8f-4251-89ac-8739503dd138)
+
+    class Solution:
+        def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+            res = []
+            freq = Counter(arr1)
+    
+            for x in arr2:
+                if x in freq :
+                    for y in range(freq[x]):
+                        res.append(x)
+                        freq[x] -= 1
+            
+            res2 = []
+            for key, val in freq.items():
+                if val != 0:
+                    while val != 0:
+                        res2.append(key)
+                        val -= 1
+            res2.sort()
+            return res+res2
