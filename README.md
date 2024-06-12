@@ -277,3 +277,28 @@ LC : 1122. Relative Sort Array
                         val -= 1
             res2.sort()
             return res+res2
+
+LC : 75. Sort Colors
+![image](https://github.com/atishay2/daily_problems/assets/52835993/f612e86d-7603-4f23-930c-0aadd962dfb8)
+
+DUTCH NATIONAL FLAG PROBLEM : throw the 0s at the left, increment the pointer, throw the 2s at the end of the array (right), decrement the pointer.
+
+    class Solution:
+        def sortColors(self, nums: List[int]) -> None:
+            """
+            Do not return anything, modify nums in-place instead.
+            """
+            left, right = 0, len(nums)-1
+            i = 0 
+    
+            while i <= right:
+                if nums[i] == 0:
+                    nums[i], nums[left] = nums[left], nums[i]
+                    left += 1
+                
+                elif nums[i] == 2:
+                    nums[i], nums[right] = nums[right], nums[i]
+                    right -= 1
+                    i -= 1
+                i += 1
+            return nums
