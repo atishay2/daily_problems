@@ -302,3 +302,28 @@ DUTCH NATIONAL FLAG PROBLEM : throw the 0s at the left, increment the pointer, t
                     i -= 1
                 i += 1
             return nums
+
+
+LC : 875. Koko Eating Bananas
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/aa8ba695-3e45-4d4c-8048-f14e99c430c7)
+    
+    class Solution:
+        def minEatingSpeed(self, piles: List[int], h: int) -> int:
+            
+            def speed_check(speed):
+                hrs = 0 
+                for x in piles:
+                    hrs += ceil(x/speed)
+                return hrs <= h
+    
+            low = 1 ; high = max(piles)
+            while low < high:
+                
+                mid = (low+high)//2
+                
+                if speed_check(mid):
+                    high = mid
+                else:
+                    low = mid+1
+            return low
