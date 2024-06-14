@@ -327,3 +327,21 @@ LC : 875. Koko Eating Bananas
                 else:
                     low = mid+1
             return low
+
+LC : 945. Minimum Increment to Make Array Unique
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/1b6f122d-3af1-41d3-a4fa-9750e596dd8f)
+
+    class Solution:
+        def minIncrementForUnique(self, nums: List[int]) -> int:
+            freq = Counter(nums)
+            count = 0 
+            nums.sort()
+            
+            for x in range(len(nums)+max(nums)):       
+                if freq[x] > 1:
+                    extra = freq[x]-1
+                    freq[x+1] = freq.get(x+1, 0)+extra
+                    count += extra
+            return count
+
