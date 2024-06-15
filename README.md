@@ -345,3 +345,29 @@ LC : 945. Minimum Increment to Make Array Unique
                     count += extra
             return count
 
+LC : 502. IPO
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/795d1cfc-37c7-4a9f-a1f1-238743ecab82)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/c37f4b46-0640-497b-9de4-86e33c12596c)
+
+    class Solution:
+        def findMaximizedCapital(self, k: int, w: int, profits: List[int], capital: List[int]) -> int: 
+            res = []
+            for x in range(len(profits)):
+                res.append((capital[x], profits[x]))
+            
+            res.sort()
+            i = 0 
+            maxCap = []
+    
+            while k > 0:        
+                while i < len(res) and res[i][0] <= w :
+                    heapq.heappush(maxCap, -res[i][1])
+                    i += 1
+                if not maxCap:
+                    break
+                w -= heapq.heappop(maxCap)
+                k -= 1
+            return w
+
+
