@@ -389,5 +389,19 @@ LC : 3184. Count Pairs That Form a Complete Day I
     
             return count 
 
+lc : 3185 Count Pairs That Form a Complete Day II
 
+![image](https://github.com/atishay2/daily_problems/assets/52835993/53327fcc-805f-4fe4-aaf4-a8932694c1a1)
 
+    class Solution:
+        def countCompleteDayPairs(self, hours: List[int]) -> int:
+            freq = {}
+            count = 0 
+            for x in range(len(hours)):
+                cur = hours[x]%24
+                if (-cur%24) in freq:
+                    count += freq[-cur%24]
+    
+                freq[cur] = freq.get(cur, 0)+1
+    
+            return count 
