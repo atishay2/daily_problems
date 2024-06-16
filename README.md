@@ -405,3 +405,27 @@ lc : 3185 Count Pairs That Form a Complete Day II
                 freq[cur] = freq.get(cur, 0)+1
     
             return count 
+
+LC : 3186. Maximum Total Damage With Spell Casting                         (R E V I S E )
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/e859330c-025b-4be6-ae31-c4811475abc6)
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/c6c4e530-83bf-423a-92a7-bebffd9a9164)
+
+    class Solution:
+        def maximumTotalDamage(self, power: List[int]) -> int:
+    
+            count = Counter(power)
+            dp = [0]*(3+len(count.keys()))
+            arr = sorted(list(count.keys()))
+            for x in range(len(arr)):
+                
+                dmg = count[arr[x]]*arr[x]
+                if x > 1 and arr[x]-arr[x-2] <= 2:
+                    dp[x+3] = max(dmg+dp[x], dp[x+2])
+                elif x > 0 and arr[x]-arr[x-1] <= 2:
+                    dp[x+3] = max(dmg+dp[x+1], dp[x+2])
+                else:
+                    dp[x+3] += dmg + dp[x+2]
+                
+            return dp[-1]
