@@ -446,3 +446,48 @@ LC : 330. Patching Array (sum of 2 to the powers from 0 to n)
                     miss *= 2
                     count += 1
             return count
+LC : 633. Sum of Square Numbers
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/9c84f53c-0b79-48d2-b2a7-cd72b54af573)
+
+OUTPUT LIMIT EXCEEDED (perform the prime factor decomposition of number, if one of the prime factor has (prime % 4 == 3) a remanided 3 when modular divided by 4 and its correcsponding exponent is ODD, the number cannot be sum of two squares otherwise it is (Number Theory sum of two squares theorem)).
+
+    class Solution:
+        def judgeSquareSum(self, c: int) -> bool:
+            def is_prime(num):
+                i = 2 ; res = set(); exp = 0
+                cur = num
+                while i <= cur and num  >= 1:
+                    
+                    if (num % i != 0):
+                        if exp > 0 : 
+                            res.add((i, exp))
+                        exp = 0
+                        if (num == 1) : break
+                        i += 1
+                        
+                    else :
+                        exp += 1
+                        num = num//i
+                    
+                return res
+            
+            primes = list(is_prime(c))
+            
+            for pr, ex in primes:
+                if (pr%4 == 3) and (ex%2 == 1):
+                    return False
+            return True
+
+CORRECT SOLUTION 
+
+    class Solution:
+        def judgeSquareSum(self, c: int) -> bool:
+            left = 0 ; right = int(math.sqrt(c))
+                    while left <= right:
+                        deco = (left**2) + (right**2)
+                        if deco == c:
+                            return True 
+                        elif deco > c : right -= 1
+                        else : left += 1
+                    return False
