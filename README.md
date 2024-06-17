@@ -429,3 +429,20 @@ LC : 3186. Maximum Total Damage With Spell Casting                         (R E 
                     dp[x+3] += dmg + dp[x+2]
                 
             return dp[-1]
+LC : 330. Patching Array (sum of 2 to the powers from 0 to n)
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/7d125006-6690-4318-87b8-321a152fdca4)
+
+    
+    class Solution:
+        def minPatches(self, nums: List[int], n: int) -> int:
+            count, miss, i = 0,1,0
+    
+            while miss <= n :
+                if i < len(nums) and nums[i] <= miss:
+                    miss += nums[i]
+                    i += 1
+                else:
+                    miss *= 2
+                    count += 1
+            return count
