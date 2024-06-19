@@ -491,3 +491,34 @@ CORRECT SOLUTION
                         elif deco > c : right -= 1
                         else : left += 1
                     return False
+
+LC : 1482. Minimum Number of Days to Make m Bouquets
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/404decde-1c80-40e1-b8a0-0745014f826b)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/9f148909-83be-4116-be69-1cbd5a787201)
+
+    
+    class Solution:
+        def minDays(self, bloomDay: List[int], m: int, k: int) -> int:
+            if m*k > len(bloomDay): return -1
+            start = 0 ; end = max(bloomDay)
+    
+            def is_possible(cur):
+                count = 0 ; bouq = 0 
+                for x in bloomDay:
+                    if x <= cur: 
+                        count += 1
+                        if count == k:
+                            bouq += 1
+                            count = 0
+                            if bouq == m : return True
+                    else: count = 0
+                return False
+            while start < end :
+                
+                mid = (start+end)//2
+                
+                if is_possible(mid):
+                    end = mid
+                else : start = mid + 1
+            return start
