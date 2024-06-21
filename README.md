@@ -522,3 +522,35 @@ LC : 1482. Minimum Number of Days to Make m Bouquets
                     end = mid
                 else : start = mid + 1
             return start
+            
+LC : 1552. Magnetic Force Between Two Balls
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/8cd3bef3-2e7e-4807-8981-fc6635194e84)
+![image](https://github.com/atishay2/daily_problems/assets/52835993/aa5d7ee8-362e-4e3f-8541-2c370a452b03)
+
+    class Solution:
+        def maxDistance(self, position: List[int], m: int) -> int:
+            position.sort()
+            start = 1 ; end = position[-1]
+    
+            def possibility(cur):
+                count = 1 
+                last = position[0]
+    
+                for x in range(1, len(position)):
+                    if position[x]-last >= cur:
+                        count += 1
+                        last = position[x]
+                        if count == m :
+                            return True 
+                return False
+    
+            while start <= end:
+                mid = (start+end)//2
+                
+                if possibility(mid):
+                    ans = mid 
+                    start = mid+1
+                else : end = mid-1
+                
+            return ans    
