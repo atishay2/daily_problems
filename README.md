@@ -554,3 +554,27 @@ LC : 1552. Magnetic Force Between Two Balls
                 else : end = mid-1
                 
             return ans    
+
+LC : 1052. Grumpy Bookstore Owner
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/9dbfc713-0e36-4827-9d87-32661ad71b92)
+
+    class Solution:
+        def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+            sat = 0 ;  dic = {}
+            for x in range(len(grumpy)):
+                if grumpy[x] == 0: sat += customers[x]
+                else : dic[x] = customers[x]
+             
+            res = 0 ; cur = 0
+             
+            left = 0 
+            for k in range(len(grumpy)):
+                
+                if k-left >= minutes:
+                    if (left) in dic : cur -= dic[left]
+                    left += 1
+                if k in dic : cur += dic[k]
+    
+                res = max(res, cur)
+            return sat+res
