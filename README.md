@@ -607,3 +607,23 @@ LC : 1382. Balance a Binary Search Tree
     
             
             return constructTree(0, len(res)-1)
+
+LC : 1038. Binary Search Tree to Greater Sum Tree
+(REVERSE INORDER TRAVERSAL)
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/dd1f6f82-7576-4fd4-af22-2a26cbc2ba3d)
+
+    class Solution:
+        def bstToGst(self, root: TreeNode) -> TreeNode:
+            self.val = 0 
+    
+            def dfs(node):
+    
+                if not node : return 
+    
+                dfs(node.right)
+                node.val += self.val 
+                self.val = node.val 
+                dfs(node.left)
+                return node
+            return dfs(root)
