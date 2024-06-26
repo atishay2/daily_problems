@@ -578,3 +578,32 @@ LC : 1052. Grumpy Bookstore Owner
     
                 res = max(res, cur)
             return sat+res
+
+LC : 1382. Balance a Binary Search Tree
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/f85a64a4-ad0f-4fb0-982f-1ee52ac44ba9)
+
+    class Solution:
+        def balanceBST(self, root: TreeNode) -> TreeNode:
+            res = []
+    
+            def dfs(node):
+                if not node: return 
+    
+                
+                dfs(node.left)
+                res.append(node.val)
+                dfs(node.right)
+            dfs(root)
+    
+            def constructTree(low, high):
+                if low > high : return None
+                mid = (low+high)//2
+                root1 = TreeNode(res[mid])
+                root1.left = constructTree(low, mid-1)
+                root1.right = constructTree(mid+1, high)
+    
+                return root1
+    
+            
+            return constructTree(0, len(res)-1)
