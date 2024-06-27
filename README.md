@@ -627,3 +627,23 @@ LC : 1038. Binary Search Tree to Greater Sum Tree
                 dfs(node.left)
                 return node
             return dfs(root)
+
+LC : 1791. Find Center of Star Graph
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/ed5db33e-8076-4b06-8331-05e4776dd295)
+
+    class Solution:
+        def findCenter(self, edges: List[List[int]]) -> int:
+            
+            if edges[0][0] == edges[1][0] or edges[0][0] == edges[1][1] : return edges[0][0]
+            else : return edges[0][1]
+
+    class Solution:
+    def findCenter(self, edges: List[List[int]]) -> int:
+        
+        cur = set()
+        for u,v in edges:
+            if u in cur :
+                return u 
+            elif v in cur : return v
+            cur.add(u) ; cur.add(v)
