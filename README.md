@@ -647,3 +647,28 @@ LC : 1791. Find Center of Star Graph
                 return u 
             elif v in cur : return v
             cur.add(u) ; cur.add(v)
+LC : 2285. Maximum Total Importance of Roads
+
+![image](https://github.com/atishay2/daily_problems/assets/52835993/722bcc27-10b3-4929-ab4d-9073608c1711)
+
+    class Solution:
+        def maximumImportance(self, n: int, roads: List[List[int]]) -> int:
+            freq = {}
+            for u,v in roads:
+                freq[u] = freq.get(u,0)+1
+                freq[v] = freq.get(v,0)+1
+            
+            wt = [] ; flag = False
+            for x,y in freq.items():
+    
+                wt.append([y,x])
+            wt.sort(reverse = True)
+            
+            for x in range(len(wt)):
+                freq[wt[x][1]] = n 
+                n -= 1
+            res = 0 
+            for a,b in roads:
+                res += freq[a]
+                res += freq[b]
+            return res
