@@ -672,3 +672,28 @@ LC : 2285. Maximum Total Importance of Roads
                 res += freq[a]
                 res += freq[b]
             return res
+
+LC : 1395. Count Number of Teams
+
+![image](https://github.com/user-attachments/assets/14587d23-07bc-4c1b-9603-f0f9f0b42dba)
+![image](https://github.com/user-attachments/assets/7d29ba24-5744-408d-9f85-9c6fdfb6f5a7)
+
+
+    class Solution:
+        def numTeams(self, rating: List[int]) -> int:
+            
+            count = 0 
+    
+            for m in range(1, len(rating)-1):
+                left_d = right_d = left_i = right_i = 0
+                for x in range(len(rating)):
+                    
+                    if rating[x] < rating[m]:
+                        if x < m : left_d += 1
+                        else : right_d += 1
+                    elif rating[x] > rating[m]:
+                        if x < m : left_i += 1
+                        else : right_i += 1
+                count += (left_d * right_i) + (left_i * right_d)
+            return count
+                
