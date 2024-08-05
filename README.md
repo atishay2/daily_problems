@@ -696,4 +696,20 @@ LC : 1395. Count Number of Teams
                         else : right_i += 1
                 count += (left_d * right_i) + (left_i * right_d)
             return count
-                
+
+LC : 2053. Kth Distinct String in an Array
+
+![image](https://github.com/user-attachments/assets/4f19193f-23ef-45ee-879e-31ce8648f563)
+
+![image](https://github.com/user-attachments/assets/6f0c1288-2278-4104-adbd-3baa940c0c34)
+
+    class Solution:
+        def kthDistinct(self, arr: List[str], k: int) -> str:
+            freq = Counter(arr)
+    
+            for ch in arr:
+                if freq[ch] == 1 and k > 0 :
+                    k -= 1
+                    if k == 0:
+                        return ch 
+            return ""
