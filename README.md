@@ -713,3 +713,35 @@ LC : 2053. Kth Distinct String in an Array
                     if k == 0:
                         return ch 
             return ""
+
+3016. Minimum Number of Pushes to Type Word II
+
+![image](https://github.com/user-attachments/assets/93053791-aa40-42c6-a0ba-33ce11e148b8)
+
+![image](https://github.com/user-attachments/assets/a0411f23-e28f-4a33-b25e-ed2ed7dbd0a5)
+
+    class Solution:
+        def minimumPushes(self, word: str) -> int:
+            freq = Counter(word)
+            res = 0 
+            heap = [(-freq[x], x) for x in freq]
+            heapq.heapify(heap)
+            i = 0 
+            
+            while heap:       
+                if i < 8 :             
+                    res += -heapq.heappop(heap)[0]
+                    i += 1
+    
+                elif 8 <= i < 16:
+                    res += -2 * heapq.heappop(heap)[0]
+                    i += 1
+    
+                elif 16 <= i < 24:
+                    res += -3 * heapq.heappop(heap)[0]
+                    i += 1
+                    
+                else :
+                    res += -4 * heapq.heappop(heap)[0]
+                    i += 1
+            return res
